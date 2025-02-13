@@ -48,6 +48,21 @@ class CalculatorController < ApplicationController
     render({:template => "calculator_templates/payment_results"}) 
   end
 
+  def random_new
+    render({:template => "calculator_templates/random_new"}) 
+  end
+
+  def random_results
+    @min = params.fetch("user_min").to_f
+    @max = params.fetch("user_max").to_f
+  
+    if @min < @max
+      @result = rand(@min..@max)
+    else
+      @result = ""
+    end
+    render({:template => "calculator_templates/random_results"})
+  end
 
 
 end
